@@ -35,7 +35,6 @@ dev = [
 bag = "bag.__main__:main"
 partition = "partition.__main__:main"
 preserve = "preserve.__main__:main"
-"preserve.batch" = "preserve.batch.__main__:main"
 
 [project.urls]
 Homepage = "https://github.com/umd-lib/preserve"
