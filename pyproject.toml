@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=77", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+platforms = ["any"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["bag*", "partition*", "preserve*"]
+
+[tool.setuptools_scm]
+version_scheme = "post-release"
+
+[project]
+name = "preserve"
+dynamic = ["version"]
+description = "Command-line digital preservation utilities."
+readme = "README.md"
+requires-python = ">=3.14"
+authors = [
+    { name = "Joshua A. Westgard", email = "westgard@umd.edu" },
+]
+dependencies = [
+    "bagit>=1.9.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[project.scripts]
+bag = "bag.__main__:main"
+partition = "partition.__main__:main"
+preserve = "preserve.__main__:main"
+"preserve.batch" = "preserve.batch.__main__:main"
+
+[project.urls]
+Homepage = "https://github.com/umd-lib/preserve"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+# for now, using the pre-0.16 default ruleset in ruff
+# see https://astral.sh/blog/ruff-v0.16.0#better-default-rule-set
+select = ["E4", "E7", "E9", "F"]

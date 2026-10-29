@@ -2,7 +2,6 @@
 
 import argparse
 import csv
-import json
 import os
 import sys
 
@@ -62,7 +61,7 @@ def main():
 
         """ (1) Parse args """
         args = parse_args()
-        sys.stderr.write(f"Running with the following arguments:\n")
+        sys.stderr.write("Running with the following arguments:\n")
         width = max([len(k) for k in args.__dict__])
         for k in args.__dict__:
             sys.stderr.write(f"  {k:>{width}} : {getattr(args, k)}\n")

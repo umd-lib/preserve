@@ -27,7 +27,7 @@ def calculate_etag(path, chunk_size):
                 # To get around this, read 1GB at a time and assemble the portions
                 # into the final md5sum.
                 if chunk_size % GB != 0:
-                    raise ConfigException('Chunk sizes >1GB must be multiples of 1GB')
+                    raise RuntimeError('Chunk sizes >1GB must be multiples of 1GB')
                 portions_per_chunk = chunk_size // GB
                 md5sum = None
                 for i, data in enumerate(chunked(handle, GB), 1):

@@ -54,7 +54,7 @@ class Manifest(list):
            Storage Manager Report'''
         r = r"Normal File-->\W+([\d,]+)\W(\\.+) \[Sent\]$"
         p = re.compile(r)
-        results = []
+
         for line in self.rawlines:
             m = p.search(line)
             if m:
@@ -67,8 +67,6 @@ class Manifest(list):
         '''Data parser for reading data from csv'''
         for marker in self.CSV_MARKERS:
             if marker in self.rawlines[0]:
-                filenamecol = marker
-                dircol = "DIRECTORY" if marker.isupper() else "Directory"
                 break
         for row in csv.DictReader(self.rawlines, delimiter=self.delimiter):
             self.append(Asset().from_csv(**row))

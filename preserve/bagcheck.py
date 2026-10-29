@@ -39,7 +39,7 @@ def best_match_paths(manifest_set, bag_set):
     bag_paths = {t[1] for t in bag_set}
     max_trim = min([len(Path(p).parts) for p in bag_paths]) - 1
 
-    print(f'Attempting to align the paths in the two sets...')
+    print('Attempting to align the paths in the two sets...')
     for trim_length in range(max_trim):
         trimmed = [Path(p).parts[trim_length:] for p in bag_paths]
         joined = [str(Path(*p)) for p in trimmed]
@@ -70,7 +70,7 @@ def bagcheck(args):
     # create a new set that attempts to align the paths in the bag with the manifest
     trimmed_bag = best_match_paths(assets_to_check, bag)
 
-    print(f"Confirming all inventory files are present in bag...")
+    print("Confirming all inventory files are present in bag...")
     # find differences between the two sets
     missing = sorted(assets_to_check - trimmed_bag)
     extra = sorted(trimmed_bag - assets_to_check)
@@ -81,11 +81,11 @@ def bagcheck(args):
         for n, file in enumerate(missing, 1):
             print(f"    {n}. {file}")
     else:
-        print(f" => All files accounted for in bag!")
+        print(" => All files accounted for in bag!")
 
     if extra:
         print(f" => {len(extra)} extra files found in bag:")
         for n, file in enumerate(extra, 1):
             print(f"    {n}. {file}")
     else:
-        print(f" => No extra files found in bag!")
+        print(" => No extra files found in bag!")

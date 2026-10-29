@@ -76,5 +76,5 @@ def verify(args):
             print(f"=> {len(diff[1])} {diff[0]}:")
             for n, asset in enumerate(sorted(diff[1]), 1):
                 print(f"   ({n}) {asset}")
-                if type(diff[1]) == dict:
+                if type(diff[1]) is dict:
                     print(f"       {' --> '.join(diff[1][asset])}")

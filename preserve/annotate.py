@@ -3,7 +3,6 @@ import os
 import sys
 
 from .asset import Asset
-from .manifest import Manifest
 
 ALGS = ['md5', 'sha1', 'sha256']
 
@@ -57,10 +56,10 @@ def examine_matching_file(filename, root, row, file_index):
 
 def annotate(args):
     '''Read CSV and scan filesystem to fill in blanks in the data'''
-    sys.stderr.write(f"Running with the following arguments:\n")
-    sys.stderr.write(f" - CSV to annotate:     {args.inventory}\n")
-    sys.stderr.write(f" - Directory to search: {args.root}\n")
-    sys.stderr.write(f" - Write results to:    {args.output}\n\n")
+    sys.stderr.write("Running with the following arguments:\n")
+    sys.stderr.write(" - CSV to annotate:     {args.inventory}\n")
+    sys.stderr.write(" - Directory to search: {args.root}\n")
+    sys.stderr.write(" - Write results to:    {args.output}\n\n")
 
     spreadsheet = read_csv(args.inventory)
     sys.stderr.write(f"Read {len(spreadsheet)} lines from CSV\n")

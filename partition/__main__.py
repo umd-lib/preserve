@@ -6,7 +6,6 @@ import logging
 import os
 import shutil
 import sys
-from pathlib import Path
 
 from preserve.utils import header
 
@@ -117,7 +116,7 @@ def main():
 
         """ (2) Validate the provided arguments """
         check_args(args)
-        logging.info(f"Running with the following arguments:")
+        logging.info("Running with the following arguments:")
         width = max([len(k) for k in args.__dict__])
         for k in args.__dict__:
             logging.info(f"  {k:>{width}} : {getattr(args, k)}")
@@ -128,7 +127,7 @@ def main():
                      file_size(fileset.bytes))
 
         """ (4) Create partition map """
-        logging.info(f"Creating mapping to partitioned tree...")
+        logging.info("Creating mapping to partitioned tree...")
         mapping = fileset.partition_by(PARTITIONING_PATTERN, args.destination)
 
         """ (5) Check for duplicate files """
